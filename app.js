@@ -1,16 +1,16 @@
-const inputs = document.getElementsByClassName("input-field");
-const toggle_btn = document.getElementsByClassName("toggle");
-const main = document.querySelector("main");
-const bullets = document.getElementsByClassName("bullet");
-const images = document.getElementsByClassName("image");
+var inputs = document.getElementsByClassName("input-field");
+var toggle_btn = document.getElementsByClassName("toggle");
+var main = document.querySelector("main");
+var bullets = document.getElementsByClassName("bullet");
+var images = document.getElementsByClassName("image");
 
-const formSignIn = document.querySelector('.sign-in-form');
-const formSignUp = document.querySelector('.sign-up-form');
+var formSignIn = document.querySelector('.sign-in-form');
+var formSignUp = document.querySelector('.sign-up-form');
 
 // Validation regex patterns
-const namePattern = /^[a-zA-Z0-9]{4,}$/;
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passwordPattern = /^.{4,}$/;
+var namePattern = /^[a-zA-Z0-9]{4,}$/;
+var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+var passwordPattern = /^.{4,}$/;
 
 // SweetAlert function for validation error
 function showValidationError(message) {
@@ -34,7 +34,7 @@ function validateInput(input, pattern, errorMessage) {
 }
 
 // Input focus and blur functionality
-for (let i = 0; i < inputs.length; i++) {
+for (var i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener("focus", function () {
     this.classList.add("active");
   });
@@ -46,7 +46,7 @@ for (let i = 0; i < inputs.length; i++) {
 }
 
 // Toggle between sign-in and sign-up forms
-for (let i = 0; i < toggle_btn.length; i++) {
+for (var i = 0; i < toggle_btn.length; i++) {
   toggle_btn[i].addEventListener("click", function () {
     main.classList.toggle("sign-up-mode");
   });
@@ -56,12 +56,12 @@ for (let i = 0; i < toggle_btn.length; i++) {
 formSignIn.addEventListener('submit', function (e) {
   e.preventDefault(); // Prevent form submission for validation
 
-  const nameInput = formSignIn.querySelector('input[type="text"]');
-  const passwordInput = formSignIn.querySelector('input[type="password"]');
+  var nameInput = formSignIn.querySelector('input[type="text"]');
+  var passwordInput = formSignIn.querySelector('input[type="password"]');
 
   // Validate name and password
-  const isNameValid = validateInput(nameInput, namePattern, 'Name must be at least 4 characters and alphanumeric.');
-  const isPasswordValid = validateInput(passwordInput, passwordPattern, 'Password must be at least 4 characters.');
+  var isNameValid = validateInput(nameInput, namePattern, 'Name must be at least 4 characters and alphanumeric.');
+  var isPasswordValid = validateInput(passwordInput, passwordPattern, 'Password must be at least 4 characters.');
 
   if (isNameValid && isPasswordValid) {
     // If valid, proceed with form submission
@@ -79,14 +79,14 @@ formSignIn.addEventListener('submit', function (e) {
 formSignUp.addEventListener('submit', function (e) {
   e.preventDefault(); // Prevent form submission for validation
 
-  const nameInput = formSignUp.querySelector('input[type="text"]');
-  const emailInput = formSignUp.querySelector('input[type="email"]');
-  const passwordInput = formSignUp.querySelector('input[type="password"]');
+  var nameInput = formSignUp.querySelector('input[type="text"]');
+  var emailInput = formSignUp.querySelector('input[type="email"]');
+  var passwordInput = formSignUp.querySelector('input[type="password"]');
 
   // Validate name, email, and password
-  const isNameValid = validateInput(nameInput, namePattern, 'Name must be at least 4 characters and alphanumeric.');
-  const isEmailValid = validateInput(emailInput, emailPattern, 'Please enter a valid email address.');
-  const isPasswordValid = validateInput(passwordInput, passwordPattern, 'Password must be at least 4 characters.');
+  var isNameValid = validateInput(nameInput, namePattern, 'Name must be at least 4 characters and alphanumeric.');
+  var isEmailValid = validateInput(emailInput, emailPattern, 'Please enter a valid email address.');
+  var isPasswordValid = validateInput(passwordInput, passwordPattern, 'Password must be at least 4 characters.');
 
   if (isNameValid && isEmailValid && isPasswordValid) {
     // If valid, proceed with form submission
@@ -102,24 +102,25 @@ formSignUp.addEventListener('submit', function (e) {
 
 // Function to move the slider
 function moveSlider() {
-  let index = this.getAttribute('data-value');
+  var index = this.getAttribute('data-value');
 
-  let currentImage = document.querySelector(`.img-${index}`);
-  for (let i = 0; i < images.length; i++) {
+  var currentImage = document.querySelector(`.img-${index}`);
+  for (var i = 0; i < images.length; i++) {
     images[i].classList.remove("show");
   }
   currentImage.classList.add("show");
 
-  const textSlider = document.querySelector(".text-group");
+  var textSlider = document.querySelector(".text-group");
   textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
 
-  for (let i = 0; i < bullets.length; i++) {
+  for (var i = 0; i < bullets.length; i++) {
     bullets[i].classList.remove("active");
   }
   this.classList.add("active");
 }
 
 // Event listener for the carousel bullets
-for (let i = 0; i < bullets.length; i++) {
+for (var i = 0; i < bullets.length; i++) {
   bullets[i].addEventListener("click", moveSlider);
 }
+
